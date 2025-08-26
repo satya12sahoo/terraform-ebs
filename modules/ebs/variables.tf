@@ -1,23 +1,6 @@
-variable "name" {
-  type        = string
-  description = "Base Name tag for the EBS volume."
-}
-
-variable "environment" {
-  type        = string
-  description = "Optional environment tag, e.g., dev/stage/prod."
-  default     = null
-}
-
-variable "project" {
-  type        = string
-  description = "Optional project/application name for tagging."
-  default     = null
-}
-
 variable "tags" {
   type        = map(string)
-  description = "Additional tags to merge with defaults."
+  description = "Tags to assign to the EBS volume."
   default     = {}
 }
 

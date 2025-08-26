@@ -8,11 +8,6 @@ variable "availability_zone" {
   description = "Availability Zone for the EBS volume (e.g., us-east-1a)."
 }
 
-variable "name" {
-  type        = string
-  description = "Name tag for the volume."
-}
-
 variable "size" {
   type        = number
   description = "Size of the volume in GiB."
@@ -20,6 +15,6 @@ variable "size" {
 
 variable "tags" {
   type        = map(string)
-  description = "Additional tags."
+  description = "Tags for the volume."
   default     = {}
 }

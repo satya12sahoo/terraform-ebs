@@ -1,6 +1,6 @@
 # EBS Terraform Module
 
-Reusable module to create and optionally attach an AWS EBS volume with flexible tagging and settings.
+Reusable module to create and optionally attach an AWS EBS volume with flexible settings and a single tags variable.
 
 ## Usage
 
@@ -14,9 +14,6 @@ provider "aws" {
 module "ebs" {
   source = "../../modules/ebs"
 
-  name               = var.name
-  environment        = var.environment
-  project            = var.project
   tags               = var.tags
 
   availability_zone  = var.availability_zone
@@ -41,14 +38,13 @@ module "ebs" {
 See `examples/ebs-basic/terraform.tfvars.example` for a full set of example inputs.
 
 ## Inputs (highlights)
-- `name` (string): Name tag. Required
 - `availability_zone` (string): AZ where to create the volume. Required
 - `size` (number): GiB size (or set `snapshot_id`)
 - `type` (string): gp3 (default), gp2, io1, io2, st1, sc1, standard
 - `iops` (number): Required for io1/io2; optional for gp3
 - `throughput` (number): gp3 only
 - `encrypted` (bool): Default true; `kms_key_id` optional
-- `tags` (map(string)): Extra tags
+- `tags` (map(string)): Tags to assign to the volume
 - Attachment: set `enable_attachment=true` and provide `instance_id` and `device_name`
 
 ## Outputs
@@ -75,9 +71,13 @@ See `examples/ebs-basic/terraform.tfvars.example` for a full set of example inpu
 module "ebs" {
   source = "../../modules/ebs"
 
-  name              = "app-data"
   availability_zone = "us-east-1a"
   size              = 20
+
+  tags = {
+    Name      = "app-data"
+    ManagedBy = "terraform"
+  }
 
   enable_attachment = false
 }

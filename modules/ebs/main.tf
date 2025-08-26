@@ -1,19 +1,3 @@
-locals {
-  base_tags = {
-    Name      = var.name
-    ManagedBy = "terraform"
-  }
-
-  optional_tags = merge(
-    var.environment == null || var.environment == "" ? {} : { Environment = var.environment },
-    var.project == null || var.project == "" ? {} : { Project = var.project }
-  )
-
-  default_tags = merge(local.base_tags, local.optional_tags)
-
-  merged_tags = merge(local.default_tags, var.tags)
-}
-
 resource "aws_ebs_volume" "this" {
   availability_zone    = var.availability_zone
   size                 = var.size
@@ -26,7 +10,7 @@ resource "aws_ebs_volume" "this" {
   multi_attach_enabled = var.multi_attach_enabled
   outpost_arn          = var.outpost_arn
 
-  tags = local.merged_tags
+  tags = var.tags
 
   lifecycle {
     precondition {
