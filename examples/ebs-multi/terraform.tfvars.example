@@ -20,6 +20,7 @@ volumes = {
     iops       = 3000
     throughput = 125
     encrypted  = true
+    # kms_key_id = "arn:aws:kms:us-east-1:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"
   }
 
   backups = {
@@ -31,6 +32,7 @@ volumes = {
     size       = 200
     type       = "st1"
     encrypted  = true
+    # kms_key_id = "arn:aws:kms:us-east-1:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"
   }
 
   db_io2 = {
@@ -43,6 +45,7 @@ volumes = {
     type                 = "io2"
     iops                 = 10000
     encrypted            = true
+    # kms_key_id           = "arn:aws:kms:us-east-1:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"
     multi_attach_enabled = false
   }
 }
