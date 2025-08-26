@@ -16,6 +16,7 @@ provider "aws" {
 module "ebs" {
   source = "../../modules/ebs"
 
+  name               = var.name
   tags               = var.tags
 
   availability_zone  = var.availability_zone

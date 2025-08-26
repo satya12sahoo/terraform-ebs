@@ -1,3 +1,8 @@
+locals {
+  name_tag = var.name == null || var.name == "" ? {} : { Name = var.name }
+  merged_tags = merge(var.tags, local.name_tag)
+}
+
 resource "aws_ebs_volume" "this" {
   availability_zone    = var.availability_zone
   size                 = var.size
@@ -10,7 +15,7 @@ resource "aws_ebs_volume" "this" {
   multi_attach_enabled = var.multi_attach_enabled
   outpost_arn          = var.outpost_arn
 
-  tags = var.tags
+  tags = local.merged_tags
 
   lifecycle {
     precondition {

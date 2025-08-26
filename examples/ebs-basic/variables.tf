@@ -8,6 +8,11 @@ variable "availability_zone" {
   description = "Availability Zone for the EBS volume (e.g., us-east-1a)."
 }
 
+variable "name" {
+  type        = string
+  description = "Name tag for the volume."
+}
+
 variable "tags" {
   type        = map(string)
   description = "Tags for the volume."

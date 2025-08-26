@@ -1,6 +1,6 @@
 # EBS Terraform Module
 
-Reusable module to create and optionally attach an AWS EBS volume with flexible settings and a single tags variable.
+Reusable module to create and optionally attach an AWS EBS volume with flexible settings. Provide a single tags map, and optionally a name to set the Name tag.
 
 ## Usage
 
@@ -14,6 +14,7 @@ provider "aws" {
 module "ebs" {
   source = "../../modules/ebs"
 
+  name               = var.name
   tags               = var.tags
 
   availability_zone  = var.availability_zone
@@ -38,6 +39,7 @@ module "ebs" {
 See `examples/ebs-basic/terraform.tfvars.example` for a full set of example inputs.
 
 ## Inputs (highlights)
+- `name` (string): Optional. If set, the `Name` tag is applied
 - `availability_zone` (string): AZ where to create the volume. Required
 - `size` (number): GiB size (or set `snapshot_id`)
 - `type` (string): gp3 (default), gp2, io1, io2, st1, sc1, standard
@@ -71,11 +73,11 @@ See `examples/ebs-basic/terraform.tfvars.example` for a full set of example inpu
 module "ebs" {
   source = "../../modules/ebs"
 
+  name              = "app-data"
   availability_zone = "us-east-1a"
   size              = 20
 
   tags = {
-    Name      = "app-data"
     ManagedBy = "terraform"
   }
 
