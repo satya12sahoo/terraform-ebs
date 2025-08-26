@@ -16,7 +16,8 @@ size       = 20
 # throughput = 125
 
 encrypted  = true
-# kms_key_id = "arn:aws:kms:us-east-1:123456789012:key/abcd-efgh-..."
+# Set to your KMS key ARN (or alias ARN) to use a customer-managed key
+# kms_key_id = "arn:aws:kms:us-east-1:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"
 
 # snapshot_id = null
 # multi_attach_enabled = false
