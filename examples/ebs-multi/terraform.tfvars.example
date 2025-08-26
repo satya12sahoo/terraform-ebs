@@ -1,0 +1,48 @@
+region = "us-east-1"
+
+# These tags will be merged into each volume's tags
+default_tags = {
+  Environment = "dev"
+  Project     = "data-platform"
+  Owner       = "platform"
+}
+
+# Define three volumes with different AZs and configurations
+volumes = {
+  logs = {
+    availability_zone = "us-east-1a"
+    name              = "logs-ebs"
+    tags = {
+      Purpose = "logs"
+    }
+    size       = 40
+    type       = "gp3"
+    iops       = 3000
+    throughput = 125
+    encrypted  = true
+  }
+
+  backups = {
+    availability_zone = "us-east-1b"
+    name              = "backups-ebs"
+    tags = {
+      Purpose = "backups"
+    }
+    size       = 200
+    type       = "st1"
+    encrypted  = true
+  }
+
+  db_io2 = {
+    availability_zone    = "us-east-1c"
+    name                 = "db-io2-ebs"
+    tags = {
+      Purpose = "database"
+    }
+    size                 = 100
+    type                 = "io2"
+    iops                 = 10000
+    encrypted            = true
+    multi_attach_enabled = false
+  }
+}
