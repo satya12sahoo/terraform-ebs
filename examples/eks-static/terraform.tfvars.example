@@ -1,0 +1,9 @@
+region = "us-east-1"
+availability_zone = "us-east-1a"
+
+name = "eks-static-data"
+size = 20
+
+tags = {
+  Owner = "platform"
+}

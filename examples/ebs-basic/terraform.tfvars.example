@@ -1,0 +1,29 @@
+region = "us-east-1"
+availability_zone = "us-east-1a"
+
+name        = "app-data"
+environment = "dev"
+project     = "orders"
+
+tags = {
+  Owner = "platform"
+  CostCenter = "cc-1234"
+}
+
+size       = 20
+# type     = "gp3"
+# iops     = 3000
+# throughput = 125
+
+encrypted  = true
+# kms_key_id = "arn:aws:kms:us-east-1:123456789012:key/abcd-efgh-..."
+
+# snapshot_id = null
+# multi_attach_enabled = false
+# outpost_arn = null
+
+# enable_attachment = true
+# instance_id       = "i-0123456789abcdef0"
+# device_name       = "/dev/sdf"
+# force_detach      = false
+# skip_destroy      = false

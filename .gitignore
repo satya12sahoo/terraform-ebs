@@ -1,0 +1,7 @@
+**/.terraform/
+*.auto.tfvars
+terraform.tfvars
+.DS_Store
+*.swp
+.idea/
+.vscode/
