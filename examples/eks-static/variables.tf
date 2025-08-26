@@ -20,6 +20,6 @@ variable "size" {
 
 variable "tags" {
   type        = map(string)
-  description = "Additional tags."
+  description = "Tags for the volume."
   default     = {}
 }

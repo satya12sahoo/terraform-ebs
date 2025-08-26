@@ -13,21 +13,9 @@ variable "name" {
   description = "Name tag for the volume."
 }
 
-variable "environment" {
-  type        = string
-  description = "Environment tag."
-  default     = null
-}
-
-variable "project" {
-  type        = string
-  description = "Project tag."
-  default     = null
-}
-
 variable "tags" {
   type        = map(string)
-  description = "Additional tags."
+  description = "Tags for the volume."
   default     = {}
 }
 

@@ -1,17 +1,6 @@
 locals {
-  base_tags = {
-    Name      = var.name
-    ManagedBy = "terraform"
-  }
-
-  optional_tags = merge(
-    var.environment == null || var.environment == "" ? {} : { Environment = var.environment },
-    var.project == null || var.project == "" ? {} : { Project = var.project }
-  )
-
-  default_tags = merge(local.base_tags, local.optional_tags)
-
-  merged_tags = merge(local.default_tags, var.tags)
+  name_tag = var.name == null || var.name == "" ? {} : { Name = var.name }
+  merged_tags = merge(var.tags, local.name_tag)
 }
 
 resource "aws_ebs_volume" "this" {
